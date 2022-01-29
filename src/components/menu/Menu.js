@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   StyledMenu,
@@ -13,7 +14,7 @@ import {
 import { faMeteor, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import MENU_ITEMS from "../constants";
 
-import { useNavigate } from "react-router-dom";
+import Tooltip from "../tooltip/Tooltip";
 
 const Menu = () => {
   const navigate = useNavigate();
@@ -26,7 +27,9 @@ const Menu = () => {
         {MENU_ITEMS.map((item, index) => {
           return (
             <MenuListLi key={index} onClick={() => navigate(item.path)}>
-              <StyledIcon icon={item.icon} />
+              <Tooltip title={item.title}>
+                <StyledIcon icon={item.icon} />
+              </Tooltip>
             </MenuListLi>
           );
         })}
